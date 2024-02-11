@@ -20,7 +20,7 @@ const port = 3000
 const API_KEY = process.env.OPENAI_API_KEY
 
 app.use(cors())
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'src')))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {

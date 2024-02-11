@@ -5,11 +5,9 @@ import {
     checkWinner,
     checkDraw,
     testCheckGameOver,
-    resetGame,
     PLAYER,
     BOT,
-    gameActive,
-    currentPlayer
+    gameActive
 } from '../src/game.mjs';
 
 describe('Tic Tac Toe Game Tests', () => {

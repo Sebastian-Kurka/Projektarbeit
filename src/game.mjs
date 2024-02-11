@@ -9,10 +9,7 @@ let gameActive = true;
 let clickedCells = [];
 let validMove = true;
 
-// Funktionen
-/*
 
-*/
 function checkWinner(localClickedCells) {
     console.log("Checking for winner...")
 
@@ -118,7 +115,6 @@ function handleAssistantMove(row, col, currentPlayer) {
         validMove = true
         clickedCells.push({ row, col, player: currentPlayer })
         console.log("Clicked cell values: ", clickedCells.map(cell => `(${cell.row}, ${cell.col}, ${cell.player})`))
-        //console.log("clicked cells after Bot turn: ", clickedCells)
         updateButtons(row, col)
     } else {
         console.log("Invalid move by the bot!")
@@ -198,7 +194,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (gameActive && !clickedCell.textContent) {
             clickedCell.textContent = PLAYER
             clickedCells.push({ row, col, player: currentPlayer })
-            //console.log("clicked cells after Player turn: ", clickedCells)
             checkGameOver(currentPlayer, clickedCells)
             if (gameActive) {
                 sendGameToServer(currentPlayer, clickedCells)
@@ -282,21 +277,10 @@ function sendGameToServer(currentPlayer, clickedCells) {
 }
 
 export {
-    BOARD_SIZE,
-    PLAYER,
-    BOT,
-    currentPlayer,
-    gameActive,
-    clickedCells,
-    validMove,
     checkWinner,
     checkDraw,
     testCheckGameOver,
-    showModal,
-    resetGame,
-    sendGameToServer,
-    isValidMove,
-    updateButtons,
-    extractCoordinates,
-    handleAssistantMove
+    PLAYER,
+    BOT,
+    gameActive
 };
