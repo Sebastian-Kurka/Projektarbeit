@@ -26,10 +26,10 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t projektarbeit .
-          echo "${{ secrets.CI_CD_GITHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker tag projektarbeit ${{ secrets.DOCKER_USERNAME }}/projektarbeit:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/projektarbeit:latest
+          docker build -t kurkasebastian/projektarbeit:latest
+         # echo "${{ secrets.CI_CD_GITHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+         # docker tag projektarbeit ${{ secrets.DOCKER_USERNAME }}/projektarbeit:latest
+         # docker push ${{ secrets.DOCKER_USERNAME }}/projektarbeit:latest
   
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
