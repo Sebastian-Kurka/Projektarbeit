@@ -34,3 +34,5 @@ jobs:
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  CI_CD_GITHUB_TOKEN: ${{secrets.CI_CD_GITHUB_TOKEN}}
+
