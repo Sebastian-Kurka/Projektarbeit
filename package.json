@@ -5,7 +5,8 @@
   "type": "module",
   "main": "aichat.mjs",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node server.mjs",
+    "test": "jest"
   },
   "author": "skurka",
   "license": "ISC",
@@ -19,5 +20,30 @@
     "openai": "^4.24.3",
     "readline-sync": "^1.4.10"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^24.0.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "mjs"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.mjs$": "babel-jest",
+      "^.+\\.m?js$": "babel-jest"
+    },
+    "testEnvironment": "jsdom"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
 }
