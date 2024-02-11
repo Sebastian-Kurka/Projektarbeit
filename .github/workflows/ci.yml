@@ -25,11 +25,12 @@ jobs:
         run: npm test
 
       - name: Build Docker Image
-        run: docker build -t projektarbeit .
+        run: |
+          docker build -t projektarbeit .
+          docker tag projektarbeit ${{ secrets.DOCKER_USERNAME }}/projektarbeit:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/projektarbeit:latest
 
-  docker_login:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Log in to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+  
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
