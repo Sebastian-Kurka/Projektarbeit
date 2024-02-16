@@ -11,22 +11,66 @@ Die CI/CD-Pipeline automatisiert den Build-, Test- und Bereitstellungsprozess de
 Die Pipeline besteht aus den folgenden Schritten:
 
 1. **Checkout-Repository**: Dieser Schritt lädt den Quellcode aus dem GitHub-Repository herunter, damit er in der Pipeline verwendet werden kann.
+````    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+````
+---
 
 2. **Setup Node.js**: Hier wird die Node.js-Umgebung für den Build-Prozess eingerichtet. Es wird die Node.js-Version 18 verwendet.
+````
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+````
+---
 
 3. **Install dependencies**: In diesem Schritt werden alle Projektabhängigkeiten mithilfe von npm installiert.
+````
+      - name: Install dependencies
+        run: npm install
+````
+---
 
 4. **Run tests**: Die Tests des Projekts werden ausgeführt, um sicherzustellen, dass die Änderungen keine vorhandene Funktionalität beeinträchtigen.
+````
+      - name: Run tests
+        run: npm test
+````
+---
 
 5. **Set up Docker Buildx**: Docker Buildx wird eingerichtet, um das Cross-Building von Docker-Images zu ermöglichen.
-
+````
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+````
+---
 6. **Log in to Docker Hub**: Anmeldung beim Docker Hub mit den bereitgestellten Anmeldeinformationen (Benutzername und Passwort).
-
+````
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+````
+---
 7. **Build and push Docker image**: Das Docker-Image wird erstellt und anschließend in das Docker Hub-Repository hochgeladen. Das Image wird mit dem Tag "latest" versehen.
-
+````
+      - name: Build and push Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/projektarbeit:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/projektarbeit:latest
+````
+---
 ## Konfiguration
 
-Die Pipeline wird ausgelöst, wenn Änderungen im Branch "main" vorgenommen und gepusht werden.
+Die Pipeline wird ausgelöst, wenn Änderungen im Branch "main" vorgenommen und gepusht werden. Alternativ kann der Pipeline auch manuell gestartet werden.
+````
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch :
+  ````
 
 ## Verwendung von Secrets
 
@@ -34,15 +78,12 @@ Für die sichere Verwendung von Anmeldeinformationen in der Pipeline werden GitH
 
 ---
 ---
-# Tests im Überblick
 
-### Dokumentation der Tic Tac Toe Tests
+# Dokumentation der Tic Tac Toe Tests
 
 Die folgende Dokumentation beschreibt die Arbeitsweise der einzelnen Tests im Tic Tac Toe Testskript (`game.test.js`). Diese Tests überprüfen verschiedene Aspekte des Tic Tac Toe-Spiels, um sicherzustellen, dass es korrekt funktioniert.
 
----
-
-#### Test: Überprüfung einer Gewinnsituation
+  #### Test: Überprüfung einer Gewinnsituation
 
 - **Beschreibung**: Dieser Test prüft, ob das Spiel korrekt eine Gewinnsituation identifiziert, wenn ein Spieler eine Siegbedingung erfüllt hat.
   
@@ -51,9 +92,7 @@ Die folgende Dokumentation beschreibt die Arbeitsweise der einzelnen Tests im Ti
   - Die `checkWinner`-Funktion wird aufgerufen, um zu überprüfen, ob ein Gewinner ermittelt wird.
   - Das Ergebnis wird mit `true` verglichen, um sicherzustellen, dass das Spiel die Gewinnsituation erkannt hat.
 
----
-
-#### Test: Überprüfung einer Unentschieden-Situation
+  #### Test: Überprüfung einer Unentschieden-Situation
 
 - **Beschreibung**: Dieser Test prüft, ob das Spiel korrekt eine Unentschieden-Situation erkennt, wenn alle Zellen belegt sind, aber kein Spieler gewonnen hat.
   
@@ -62,9 +101,7 @@ Die folgende Dokumentation beschreibt die Arbeitsweise der einzelnen Tests im Ti
   - Die `checkDraw`-Funktion wird aufgerufen, um zu überprüfen, ob das Spiel unentschieden endet.
   - Das Ergebnis wird mit `true` verglichen, um sicherzustellen, dass das Spiel die Unentschieden-Situation erkannt hat.
 
----
-
-#### Test: Überprüfung des Spielendes bei einem Spieler-Gewinn
+  #### Test: Überprüfung des Spielendes bei einem Spieler-Gewinn
 
 - **Beschreibung**: Dieser Test prüft, ob das Spiel korrekt endet, wenn ein Spieler eine Gewinnsituation erreicht hat.
   
@@ -73,9 +110,7 @@ Die folgende Dokumentation beschreibt die Arbeitsweise der einzelnen Tests im Ti
   - Die `testCheckGameOver`-Funktion wird aufgerufen, um das Spielende zu überprüfen, nachdem ein Spieler gewonnen hat.
   - Es wird überprüft, ob die Spielaktivität (`gameActive`) nach dem Aufruf der Funktion auf `false` gesetzt ist.
 
----
-
-#### Test: Überprüfung des Spielendes bei einem Unentschieden
+  #### Test: Überprüfung des Spielendes bei einem Unentschieden
 
 - **Beschreibung**: Dieser Test prüft, ob das Spiel korrekt endet, wenn alle Zellen belegt sind, aber kein Spieler gewonnen hat.
   
@@ -83,6 +118,3 @@ Die folgende Dokumentation beschreibt die Arbeitsweise der einzelnen Tests im Ti
   - Es wird ein Zustand simuliert, in dem alle Zellen des Spielfelds belegt sind, aber kein Spieler eine Gewinnsituation erreicht hat.
   - Die `testCheckGameOver`-Funktion wird aufgerufen, um das Spielende zu überprüfen, nachdem alle Zellen belegt sind.
   - Es wird überprüft, ob die Spielaktivität (`gameActive`) nach dem Aufruf der Funktion auf `false` gesetzt ist.
-
----
-
