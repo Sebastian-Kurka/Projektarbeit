@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<style>
+    body {
+        background-color: #ffffff; /* weißer Hintergrund */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    form {
+        background-color: #ffffff; /* weißer Hintergrund */
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Image Generator</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="visual" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" version="1.1">
         <rect x="0" y="0" width="100vw" height="100vh" fill="#001220" />
         <path
@@ -37,19 +53,48 @@
 
         </ul>
     </nav>
-    
-    <header>
-        <h1>AI Image Generator</h1>
-    </header>
-    
-    <div class="loading-spinner"></div>
-    <section class="images-section"></section>
-    <div class="user-input">
-        <input type="text" id="userInput" placeholder="Bildbeschreibung eingeben...">
-        <button id="sendButton">Senden</button>
-    </div>
 
-    <script src="aipic.mjs"></script>
+    <header>
+        <h1>AI Form</h1>
+    </header>
+    <h2>HTML Formulare</h2>
+    <form action="#" method="POST">
+
+        <label for="optionsfeld">Optionsfeld:</label><br>
+        <input type="radio" id="option1" name="optionsfeld" value="option1">
+        <label for="option1">ChatGPT 3.5</label><br>
+        <input type="radio" id="option2" name="optionsfeld" value="option2">
+        <label for="option2">ChatGPT 4</label><br>
+
+        <label for="textfeld">Eingabe:</label><br>
+        <textarea name="lizenz" cols="50" rows="10" readonly>Text...</textarea>
+        <br>
+        <label for="textfeld">Ausgabe:</label><br>
+        <textarea name="lizenz" cols="50" rows="10" readonly>Text...</textarea>
+        <br>
+        <label for="checkbox">Kontrollkästchen:</label><br>
+
+        <label for="checkbox1">Option 1</label>
+        <input type="checkbox" id="checkbox1" name="checkbox1" value="value1">
+
+        <label for="checkbox2">Option 2</label>
+        <input type="checkbox" id="checkbox2" name="checkbox2" value="value2">
+
+        <label for="checkbox3">Option 3</label>
+        <input type="checkbox" id="checkbox3" name="checkbox3" value="value3">
+
+        <label for="tokens">Max Tokens:</label><br>
+        <input type="number" id="tokens" name="tokens"><br><br>
+
+        <div id="slider-container">
+            <input type="range" min="0" max="1" step="0.01" value="0.5" id="slider">
+            <p id="slider-value">Wert: <span id="slider-output">0.5</span></p>
+        </div>
+
+        <input type="submit" value="Absenden">
+    </form>
+
+    <script type="module" src="" defer></script>
 </body>
 
 </html>
