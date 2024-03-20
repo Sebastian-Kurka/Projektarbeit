@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<style>
-    body {
-        background-color: #ffffff; /* weißer Hintergrund */
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-    }
-    form {
-        background-color: #ffffff; /* weißer Hintergrund */
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +10,8 @@
 
 <body>
 
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="visual" viewBox="0 0 900 600" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" version="1.1">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="visual" viewBox="0 0 900 600"
+        preserveAspectRatio="xMidYMid slice" width="100%" height="100%" version="1.1">
         <rect x="0" y="0" width="100vw" height="100vh" fill="#001220" />
         <path
             d="M0 326L11.5 334.8C23 343.7 46 361.3 69 361.8C92 362.3 115 345.7 138.2 338.7C161.3 331.7 184.7 334.3 207.8 343.2C231 352 254 367 277 370.3C300 373.7 323 365.3 346 363.2C369 361 392 365 415.2 362.5C438.3 360 461.7 351 484.8 350.8C508 350.7 531 359.3 554 356.8C577 354.3 600 340.7 623 335.2C646 329.7 669 332.3 692.2 332.2C715.3 332 738.7 329 761.8 336.5C785 344 808 362 831 362.3C854 362.7 877 345.3 888.5 336.7L900 328L900 601L888.5 601C877 601 854 601 831 601C808 601 785 601 761.8 601C738.7 601 715.3 601 692.2 601C669 601 646 601 623 601C600 601 577 601 554 601C531 601 508 601 484.8 601C461.7 601 438.3 601 415.2 601C392 601 369 601 346 601C323 601 300 601 277 601C254 601 231 601 207.8 601C184.7 601 161.3 601 138.2 601C115 601 92 601 69 601C46 601 23 601 11.5 601L0 601Z"
@@ -50,51 +36,182 @@
             <li><a href="aipic.html">AI PIC</a></li>
             <li><a href="game.html">AI GAME</a></li>
             <li><a href="aiform.html">AI FORM</a></li>
-
         </ul>
     </nav>
 
     <header>
         <h1>AI Form</h1>
     </header>
-    <h2>HTML Formulare</h2>
-    <form action="#" method="POST">
+    <form id="form" action="#" method="POST">
+        <table width="100%">
+            <tr>
+                <td width="50%">
+                    <label for="optionsfeld">Chat GPT Model:</label><br>
+                    <table>
+                        <tr>
+                            <td>
+                                <label>3.5 turbo</label>
+                            </td>
+                            <td>
+                                <input type="radio" id="model" name="model" value="3.5" checked="checked"
+                                    onclick="changePrice(this)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>4</label>
+                            </td>
+                            <td>
+                                <input type="radio" id="model" name="model" value="4" onclick="changePrice(this)">
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
 
-        <label for="optionsfeld">Optionsfeld:</label><br>
-        <input type="radio" id="option1" name="optionsfeld" value="option1">
-        <label for="option1">ChatGPT 3.5</label><br>
-        <input type="radio" id="option2" name="optionsfeld" value="option2">
-        <label for="option2">ChatGPT 4</label><br>
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="translate">Translate</label>
+                            </td>
+                            <td>
+                                <input type="checkbox" id="translate" name="translate" onchange="showDropdown()"
+                                    value="value1">
+                            </td>
+                        </tr>
+                        <tr id="translateLanguage">
+                            <td>
+                                <label for="chooseLanguage">choosse output Language</label>
+                            </td>
+                            <td>
+                                <select id="auswahlliste" name="auswahlliste">
+                                    <option value="arabian">Arabisch</option>
+                                    <option value="bosnian">Bosnisch</option>
+                                    <option value="chinese">Chinesisch</option>
+                                    <option value="german">Deutsch</option>
+                                    <option value="english">Englisch</option>
+                                    <option value="france">Französisch</option>
+                                    <option value="greek">Griechisch</option>
+                                    <option value="hindian">Hindi</option>
+                                    <option value="italian">Italienisch</option>
+                                    <option value="japanese">Japanisch</option>
+                                    <option value="croatian">Kroatisch</option>
+                                    <option value="latin">Latain</option>
+                                    <option value="mongolian">Mongolisch</option>
+                                    <option value="duch">Niederländisch</option>
+                                    <option value="polen">Polnisch</option>
+                                    <option value="orkish">Orkisch</option>
+                                    <option value="russian">Russisch</option>
+                                    <option value="spain">Spanisch</option>
+                                    <option value="turkish">Türkisch</option>
+                                    <option value="hungarian">Ungarisch</option>
+                                    <option value="vietnamese">Vietnamesisch</option>
+                                </select><br><br>
 
-        <label for="textfeld">Eingabe:</label><br>
-        <textarea name="lizenz" cols="50" rows="10" readonly>Text...</textarea>
-        <br>
-        <label for="textfeld">Ausgabe:</label><br>
-        <textarea name="lizenz" cols="50" rows="10" readonly>Text...</textarea>
-        <br>
-        <label for="checkbox">Kontrollkästchen:</label><br>
+                                <script>
+                                    function showDropdown() {
+                                        var checkbox = document.getElementById('translate');
+                                        var dropdown = document.getElementById('translateLanguage');
 
-        <label for="checkbox1">Option 1</label>
-        <input type="checkbox" id="checkbox1" name="checkbox1" value="value1">
+                                        if (checkbox.checked) {
+                                            dropdown.style.display = 'block';
+                                        } else {
+                                            dropdown.style.display = 'none';
+                                        }
+                                    }
+                                </script>
 
-        <label for="checkbox2">Option 2</label>
-        <input type="checkbox" id="checkbox2" name="checkbox2" value="value2">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Summarize</label>
+                            </td>
+                            <td>
+                                <input type="radio" id="option" name="checkbox" value="value2">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Bullet Points</label>
+                            </td>
+                            <td>
+                                <input type="radio" id="option" name="checkbox" value="value3">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Enchance</label>
+                            </td>
+                            <td>
+                                <input type="radio" id="option" name="checkbox" value="value3">
+                            </td>
+                        </tr>
 
-        <label for="checkbox3">Option 3</label>
-        <input type="checkbox" id="checkbox3" name="checkbox3" value="value3">
+                    </table>
+                    <hr>
 
-        <label for="tokens">Max Tokens:</label><br>
-        <input type="number" id="tokens" name="tokens"><br><br>
+                    <!-- Tokens and Price -->
 
-        <div id="slider-container">
-            <input type="range" min="0" max="1" step="0.01" value="0.5" id="slider">
-            <p id="slider-value">Wert: <span id="slider-output">0.5</span></p>
-        </div>
+                    <label for="tokens">max Tokens: (<span- id="token-price">0.00005$</span>)</label>
+                    <input type="number" id="tokens" name="tokens" value="100" min="10" max="1000000" step="10"
+                        onclick="changePrice()">
 
-        <input type="submit" value="Absenden">
+                    <script>
+                        var currentValue = "3.5"
+
+                        function changePrice(model) {
+                            const tokens = document.getElementById('tokens')
+                            const tokenPrice = document.getElementById('token-price')
+
+                            if (model) {
+                                currentValue = model.value
+                            }
+
+                            if (currentValue == "3.5") {
+                                tokenPrice.textContent = (tokens.value * 0.5 / 1000000) + "$)"
+                            }
+                            else if (currentValue == "4") {
+                                tokenPrice.textContent = (tokens.value * 30.00 / 1000000) + "$)"
+                            }
+                        }
+                    </script>
+
+                    <br>
+                    <hr>
+
+                    <!-- Flavor Slider -->
+
+                    <div id="slider-container">
+                        <label for="slider" id="slider-value">Falvour:<span id="slider-output">0.5</span></label>
+                        <input type="range" min="0" max="1" step="0.01" value="" id="slider">
+
+                        <script>
+                            const slider = document.getElementById('slider')
+                            const output = document.getElementById('slider-output')
+
+                            slider.addEventListener('input', function () {
+                                output.textContent = slider.value
+                            });
+                        </script>
+                    </div>
+                </td>
+                <td width="50%">
+
+                    <label for="textarea">Input:</label><br>
+                    <textarea name="formInput" id="userInput" rows="5" placeholder="Enter your promt..." autofocus required></textarea>
+                    <br>
+                    <button id="
+                        generate">Generieren</button>
+
+                    <br>
+                    <label for="textarea">Output:</label><br>
+                    <textarea name="formOutput" id="assistantResponse" rows="10" readonly placeholder="Assistant reply..."></textarea>
+                </td>
+            </tr>
+        </table>
     </form>
 
-    <script type="module" src="" defer></script>
+    <script type="module" src="aiform.mjs" defer></script>
 </body>
 
 </html>

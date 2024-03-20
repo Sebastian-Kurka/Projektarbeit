@@ -207,3 +207,34 @@ input {
     margin-top: 10px;
     cursor: pointer;
 }
+
+#option, #translate, #model {
+    accent-color: #4caf50;
+}
+
+#form {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#slider {
+    accent-color: #4caf50;
+    box-shadow: none;
+}
+
+#tokens {
+    box-shadow: none;
+    border: 1px solid black;
+}
+
+#translateLanguage {
+    display: none;
+}
+
+textarea {
+    width: 95%;
+}
