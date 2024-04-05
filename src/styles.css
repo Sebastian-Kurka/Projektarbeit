@@ -208,8 +208,9 @@ input {
     cursor: pointer;
 }
 
-#option, #translate, #model {
+#optionSummarize, #optionBullet, #optionEnchance, #translate, #model3, #model4, #slider {
     accent-color: #4caf50;
+    box-shadow: none;
 }
 
 #form {
@@ -219,11 +220,6 @@ input {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#slider {
-    accent-color: #4caf50;
-    box-shadow: none;
 }
 
 #tokens {

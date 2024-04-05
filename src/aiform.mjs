@@ -23,15 +23,33 @@ async function main(userInput) {
         const temperature = parseFloat(document.getElementById('slider').value)
         const model = getSelectetModel()
         const language = getLanguage()
+        var summarize = document.getElementById('optionSummarize').checked
+        var bulletPoints = document.getElementById('optionBullet').checked
+        var enchance = document.getElementById('optionEnchance').checked
         console.log(model)
 
-        const messages = [
+        var messages = [
             { "role": "system", "content": `You are a helpful assistant.` },
             { "role": "user", "content": userInput }
         ]
         if (language) {
-            const messages = [
-                { "role": "system", "content": `Translate the quser message to ${language}` },
+            messages = [
+                { "role": "system", "content": `Translate the user message to ${language}` },
+                { "role": "user", "content": userInput }
+            ]
+        } else if (summarize) {
+            messages = [
+                { "role": "system", "content": `summarize the user input in a short text as short as possible. the output should have less then half as much charakters than the input!` },
+                { "role": "user", "content": userInput }
+            ]
+        } else if (bulletPoints) {
+            messages = [
+                { "role": "system", "content": `liste die wichtigsten punkte des user inputs in einer liste auf. halte die sätze so kurz wie möglich! starte jeden dieser punkte in einer neuen zeile`},
+                { "role": "user", "content": userInput }
+            ]
+        } else if (enchance) {
+            messages = [
+                { "role": "system", "content": `schreibe den user input in eine gehobernere sprache um` },
                 { "role": "user", "content": userInput }
             ]
         }
