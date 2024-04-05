@@ -42,27 +42,27 @@
     <header>
         <h1>AI Form</h1>
     </header>
-    <form id="form" action="#" method="POST">
+    <form id="form" action="#">
         <table width="100%">
             <tr>
                 <td width="50%">
-                    <label for="optionsfeld">Chat GPT Model:</label><br>
+                    Chat GPT Model:
                     <table>
                         <tr>
                             <td>
-                                <label>3.5 turbo</label>
+                                <label for="model3">3.5 turbo</label>
                             </td>
                             <td>
-                                <input type="radio" id="model" name="model" value="3.5" checked="checked"
+                                <input type="radio" id="model3" name="model" value="3.5" checked="checked"
                                     onclick="changePrice(this)">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label>4</label>
+                                <label for="model4">4</label>
                             </td>
                             <td>
-                                <input type="radio" id="model" name="model" value="4" onclick="changePrice(this)">
+                                <input type="radio" id="model4" name="model" value="4" onclick="changePrice(this)">
                             </td>
                         </tr>
                     </table>
@@ -80,7 +80,7 @@
                         </tr>
                         <tr id="translateLanguage">
                             <td>
-                                <label for="chooseLanguage">choosse output Language</label>
+                                <label for="auswahlliste">choosse output Language</label>
                             </td>
                             <td>
                                 <select id="auswahlliste" name="auswahlliste">
@@ -124,26 +124,26 @@
                         </tr>
                         <tr>
                             <td>
-                                <label>Summarize</label>
+                                <label for="optionSummarize">Summarize</label>
                             </td>
                             <td>
-                                <input type="radio" id="option" name="checkbox" value="value2">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Bullet Points</label>
-                            </td>
-                            <td>
-                                <input type="radio" id="option" name="checkbox" value="value3">
+                                <input type="radio" id="optionSummarize" name="checkbox" value="value2">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <label>Enchance</label>
+                                <label for="optionBullet">Bullet Points</label>
                             </td>
                             <td>
-                                <input type="radio" id="option" name="checkbox" value="value3">
+                                <input type="radio" id="optionBullet" name="checkbox" value="value3">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="optionEnchance">Enchance</label>
+                            </td>
+                            <td>
+                                <input type="radio" id="optionEnchance" name="checkbox" value="value3">
                             </td>
                         </tr>
 
@@ -197,14 +197,13 @@
                 </td>
                 <td width="50%">
 
-                    <label for="textarea">Input:</label><br>
+                    <label for="userInput">Input:</label><br>
                     <textarea name="formInput" id="userInput" rows="5" placeholder="Enter your promt..." autofocus required></textarea>
                     <br>
-                    <button id="
-                        generate">Generieren</button>
+                    <button id="generate">Generieren</button>
 
                     <br>
-                    <label for="textarea">Output:</label><br>
+                    <label for="assistantResponse">Output:</label><br>
                     <textarea name="formOutput" id="assistantResponse" rows="10" readonly placeholder="Assistant reply..."></textarea>
                 </td>
             </tr>
